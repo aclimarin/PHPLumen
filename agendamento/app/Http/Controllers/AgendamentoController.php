@@ -23,13 +23,13 @@ class AgendamentoController extends Controller
     public function getAll()
     {
         $agendamentos = $this->model->all();
-        response()->json($agendamentos);
+        return response()->json($agendamentos);
     }
 
     public function get($id)
     {
         $agendamento = $this->model->find($id);
-        response()->json($agendamento);
+        return response()->json($agendamento);
     }
 
     public function save(Request $request)
@@ -50,7 +50,7 @@ class AgendamentoController extends Controller
     {
         $agendamento = $this->model->find($id);
         $agendamento->Situacao = "Cancelada";
-        $agendamento->update($request->all());
+        $this->model->update($agendamento->all());
 
         return response()->json($agendamento);
     }
