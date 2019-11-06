@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sala;
 use App\Models\Agendamento;
 
 class AgendamentoController extends Controller
@@ -23,32 +22,37 @@ class AgendamentoController extends Controller
 
     public function getAll()
     {
-        return "getAll";
+        $agendamentos = $this->model->all();
+        response()->json($agendamentos);
     }
 
     public function get($id)
     {
-        return "get " . $id;
+        $agendamento = $this->model->find($id);
+        response()->json($agendamento);
     }
 
     public function save(Request $request)
     {
-        dd($request->all());
+        $agendamento = $thi->model->create($request->all());
+        return response()->json($agendamento);
     }
 
     public function update($id, Request $request)
     {
-        dd($id, $request->all());
+        $agendamento = $thi->model->find($id)
+            ->update($request->all());
+
+            return response()->json($agendamento);
     }
 
     public function cancelar($id)
     {
-        return "cancelar " . $id;
-    }
+        $agendamento = $thi->model->find($id);
+        $agendamento->Situacao = "Cancelada";
+        $agendamento->update($request->all());
 
-    public function ativar($id)
-    {
-        return "ativar " . $id;
+        return response()->json($agendamento);
     }
     //
 }

@@ -17,6 +17,5 @@ $router->group(['prefix' => "/api/agendamento"], function() use ($router){
     $router->post("/", "AgendamentoController@save");
     $router->put("/{id}", "AgendamentoController@update");
     $router->put("/cancelar/{id}", "AgendamentoController@cancelar");
-    $router->put("/ativar/{id}", "AgendamentoController@ativar");
     
 });
