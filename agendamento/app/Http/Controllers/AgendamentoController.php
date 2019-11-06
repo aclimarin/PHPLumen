@@ -34,13 +34,13 @@ class AgendamentoController extends Controller
 
     public function save(Request $request)
     {
-        $agendamento = $thi->model->create($request->all());
+        $agendamento = $this->model->create($request->all());
         return response()->json($agendamento);
     }
 
     public function update($id, Request $request)
     {
-        $agendamento = $thi->model->find($id)
+        $agendamento = $this->model->find($id)
             ->update($request->all());
 
             return response()->json($agendamento);
@@ -48,7 +48,7 @@ class AgendamentoController extends Controller
 
     public function cancelar($id)
     {
-        $agendamento = $thi->model->find($id);
+        $agendamento = $this->model->find($id);
         $agendamento->Situacao = "Cancelada";
         $agendamento->update($request->all());
 

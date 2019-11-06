@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agendamento extends Model
 {
     protected $table = 'agendamento';
-    protected $filable = [
+    protected $fillable = [
         'Id',
         'IdSala',
         'EmailRequisitante',
