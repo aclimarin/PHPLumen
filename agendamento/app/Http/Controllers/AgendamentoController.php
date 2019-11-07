@@ -40,17 +40,18 @@ class AgendamentoController extends Controller
 
     public function update($id, Request $request)
     {
+        $agendamentoView = $this->model->find($id);
         $agendamento = $this->model->find($id)
             ->update($request->all());
-
-            return response()->json($agendamento);
+        
+            return response()->json([$agendamentoView, $request->all()]);
     }
 
     public function cancelar($id)
     {
         $agendamento = $this->model->find($id);
         $agendamento->Situacao = "Cancelada";
-        $this->model->update($agendamento->all());
+        $this->model->update($agendamento);
 
         return response()->json($agendamento);
     }
